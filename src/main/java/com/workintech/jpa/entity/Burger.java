@@ -9,12 +9,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name="burger", schema = "burger_project")
+@Table(name="burgers", schema = "burger_project")
 public class Burger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @Positive
     private int id;
 
     @Column(name = "burger_name")

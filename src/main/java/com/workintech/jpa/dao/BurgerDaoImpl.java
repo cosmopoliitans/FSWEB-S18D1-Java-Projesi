@@ -18,8 +18,9 @@ public class BurgerDaoImpl implements BurgerDao {
 
     @Transactional
     @Override
-    public void save(Burger burger) {
+    public Burger save(Burger burger) {
         entityManager.persist(burger);
+        return burger;
     }
 
     @Override
@@ -52,17 +53,19 @@ public class BurgerDaoImpl implements BurgerDao {
                 .setParameter("content", "%" + content + "%")
                 .getResultList();
     }
-
+    @Transactional
     @Override
-    public void update(Burger burger) {
+    public Burger update(Burger burger) {
         entityManager.merge(burger);
+        return burger;
     }
-
+    @Transactional
     @Override
-    public void remove(Integer id) {
+    public Burger remove(int id) {
         Burger burger = entityManager.find(Burger.class, id);
         if (burger != null) {
             entityManager.remove(burger);
         }
+        return burger;
     }
 }
